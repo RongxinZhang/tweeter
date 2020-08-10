@@ -5,6 +5,8 @@
  */
 html {
   box-sizing: border-box;
+  font-family: 'Bungee', cursive;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -23,3 +25,26 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ nav{
+  /* Be 120 pixels in height
+  Be the full width of the viewport.
+  Have #4056A1 as its default background colour.
+  Have #FFFFF as its default font colour
+  The <span> within the <nav> has Bungee as it's default font-family
+  The inner content should not be touching the viewport edge on any side and should remain 1.5ems away from all edges */
+  /* height: 120px; */
+  width: 100%;
+  background: #4056A1;
+  color: #ffffff;
+  padding: 1.5em;
+  display: flex;
+ }
+
+ nav .logo{
+  font-family: 'Bungee', cursive;
+  flex: 1;
+ }
+
+
+ 
