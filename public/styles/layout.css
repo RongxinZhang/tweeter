@@ -39,12 +39,29 @@ body {
   color: #ffffff;
   padding: 1.5em;
   display: flex;
+  align-items: center;
  }
 
- nav .logo{
+.logo{
   font-family: 'Bungee', cursive;
   flex: 1;
  }
 
+.write-tweet{
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
 
+.write-tweet span{
+  font-weight: 700;
+}
  
+main{
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 200px;
+  margin: 0 auto;
+}
