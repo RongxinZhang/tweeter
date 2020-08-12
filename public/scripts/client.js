@@ -23,6 +23,29 @@ let autoExpand = function(field) {
 
 };
 
+
+const tweetTemplate = function(tweetObj){
+  const one_day=1000*60*60*24
+  let template = `<article class="tweet">
+    <header>
+      <img src="${tweetObj.user.avatars}" alt="profile-image">
+      <h3>${tweetObj.user.name}</h3>
+      <span>${tweetObj.user.handle}c</span>
+    </header>
+    <div class="tweet-content">${tweetObj.content.text}</div>
+    <footer>
+      <span class="days-ago"> ${Math.round((Date.now() - tweetObj.created_at)/one_day)} days ago</span>
+      <span class="flags">
+        <i class="flasg">S</i>
+        <i class="retweet">R</i>
+        <i class="love">L</i>
+      </span>
+    </footer>
+
+  </article>`
+  return template;
+}
+
 $(document).ready(function() {
   // Updates the text in counter
   const TWEET_SIZE = 140;
@@ -41,9 +64,8 @@ $(document).ready(function() {
     }
 
     autoExpand(document.querySelector('textarea'));
-
   });
-
+  
 });
 
 
