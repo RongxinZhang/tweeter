@@ -23,8 +23,7 @@ let autoExpand = function(field) {
 
 };
 
-
-const tweetTemplate = function(tweetObj){
+const createTweetElement = function(tweetObj){
   const one_day=1000*60*60*24
   let template = `<article class="tweet">
     <header>
@@ -41,9 +40,67 @@ const tweetTemplate = function(tweetObj){
         <i class="love">L</i>
       </span>
     </footer>
-
   </article>`
   return template;
+}
+
+const BASE_URL = 'http://localhost:8080';
+
+const renderTweets = function(tweets) {
+  // loops through tweets
+  // calls createTweetElement for each tweet
+  // takes return value and appends it to the tweets container
+  for (const tweetData of tweets) {
+    console.log(tweetData)
+    const $tweet = createTweetElement(tweetData);
+    $('#tweets-container').append($tweet); //
+  }
+}
+
+/**
+ * Get tweets to /tweets endpoint
+ * @param {function} cb err and response callback
+ */
+const loadTweets = async function(cb){
+  const URL = `${BASE_URL}/tweets`
+  $.ajax({
+    type: "GET",
+    url: URL,
+  }).done((res)=>{
+    cb(null, res);
+  })
+  .fail((err)=>{
+    cb(err, null);
+    // console.log("failure", err)
+  })
+  .always((res)=>{
+    cb(null, res);
+    // console.log("finished")
+  });
+}
+
+/**
+ * Post tweets to /tweets endpoint
+ * @param {function} cb err and response callback
+ */
+const postTweets = function(cb){
+  const URL = `${BASE_URL}/tweets`
+  $(".new-tweet form").on("submit", function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: URL,
+      data: $(this).serialize()
+    }).done((res)=>{
+      cb(null, res);
+    })
+    .fail((err)=>{
+      cb(err, null);
+    })
+    .always((res)=>{
+      cb(null, res);
+    });
+  });
 }
 
 $(document).ready(function() {
@@ -55,6 +112,7 @@ $(document).ready(function() {
     let counterEl = $(".counter");
     counterEl.text(TWEET_SIZE - textLength);
 
+    // Change text color depending on info
     if (textLength > 140) {
       counterEl.css("color", "red");
       $(this).css("border-bottom", "1px solid red");
@@ -65,7 +123,25 @@ $(document).ready(function() {
 
     autoExpand(document.querySelector('textarea'));
   });
-  
+
+  loadTweets((err, res)=>{
+    if(!err){
+      return renderTweets(res);
+    }
+    console.log(err);
+  })
+
+  // Submitting new tweet
+  $(".new-tweet form").on("submit", function(e){
+    e.preventDefault();
+
+    // Bind this contextd
+    const conextedPostTweets = postTweets.bind(this)
+    conextedPostTweets((err,res)=>{
+      console.log(err,res)
+    });
+  });
+
 });
 
 
