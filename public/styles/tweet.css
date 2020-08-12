@@ -38,6 +38,7 @@
   display: flex;
   margin-top: 10px;
   font-size: 16px;
+  align-items: center;
 }
 
 .container-submission button{
@@ -49,6 +50,59 @@
 }
 
 .container-submission .counter{
+  font-family: 'Bungee', cursive;
   margin-left: auto;
 }
 
+
+
+/* TWEET DISPLAY */
+
+.tweet-container{
+}
+
+.tweet{
+  border: 3px solid grey;
+  padding: 0.8em;
+}
+.tweet:hover{
+  box-shadow: 2px 22px 2px lightseagreen;
+}
+
+.tweet header{
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 0.8em 0;
+  align-items: center;
+}
+
+.tweet header img{
+  height: 30px;
+  margin-right: 0.3em;
+}
+
+.tweet header h3{
+  flex: 1;
+
+
+.tweet header span{
+  color: lightgrey
+}
+
+.tweet .tweet-content{
+  margin: 0 0 0.8em 0;
+}
+
+.tweet footer{
+  border-top: 3px solid grey;
+  padding: 0.8em 0 0 0;
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.tweet .flags{
+  justify-self:flex-end;
+  margin-left:auto
+}
