@@ -46,14 +46,17 @@ const createTweetElement = function(tweetObj){
 
 const BASE_URL = 'http://localhost:8080';
 
-const renderTweets = function(tweets) {
+const renderTweets = function(tweets, newTweet=false) {
   // loops through tweets
   // calls createTweetElement for each tweet
   // takes return value and appends it to the tweets container
   for (const tweetData of tweets) {
-    console.log(tweetData)
     const $tweet = createTweetElement(tweetData);
-    $('#tweets-container').append($tweet); //
+    if(newTweet){
+      $('#tweets-container').prepend($tweet); //
+    } else{
+      $('#tweets-container').append($tweet); //
+    }
   }
 }
 
@@ -150,8 +153,11 @@ $(document).ready(function() {
       return alert(validationMessage);
     }
     // Bind this contextd
-    const conextedPostTweets = postTweets.bind(this)
-    conextedPostTweets((err,res)=>{
+    const postTweetsWithContext = postTweets.bind(this)
+    postTweetsWithContext((err,res)=>{
+      if (!err){
+        renderTweets([res], true);
+      }
       console.log(err,res)
     });
   });
