@@ -15,7 +15,7 @@ header{
 .profile{
   min-height: 400px;
   width:100%;
-  background: #333;
+  background: #d81765;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -157,7 +157,12 @@ $(document).ready(function() {
 
     const validationMessage = validateForm($(".new-tweet form textarea").val());
     if (validationMessage){
-      return alert(validationMessage);
+      $( "#error-container" ).text(validationMessage) 
+      $( "#error-container" ).slideDown( "slow" );
+      setTimeout(() => {
+        $( "#error-container" ).hide();
+      }, 5000);
+      return;
     }
     // Bind this contextd
     const postTweetsWithContext = postTweets.bind(this)
