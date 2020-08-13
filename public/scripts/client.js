@@ -25,13 +25,20 @@ let autoExpand = function(field) {
 
 const createTweetElement = function(tweetObj){
   const one_day=1000*60*60*24
+
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
   let template = `<article class="tweet">
     <header>
       <img src="${tweetObj.user.avatars}" alt="profile-image">
-      <h3>${tweetObj.user.name}</h3>
-      <span>${tweetObj.user.handle}c</span>
+      <h3>${escape(tweetObj.user.name)}</h3>
+      <span>${escape(tweetObj.user.handle)}c</span>
     </header>
-    <div class="tweet-content">${tweetObj.content.text}</div>
+    <div class="tweet-content">${escape(tweetObj.content.text)}</div>
     <footer>
       <span class="days-ago"> ${Math.round((Date.now() - tweetObj.created_at)/one_day)} days ago</span>
       <span class="flags">
