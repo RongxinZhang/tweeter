@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
+<head>
+  <!-- Meta Information -->
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap" rel="stylesheet">
+  <title>Tweeter - Home Page</title>
 
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/reset.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    type="text/css" />
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  </head>
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,700&display=swap"
+    rel="stylesheet">
 
-  <body>
-    <!-- Top nav bar (fixed) -->
-    <nav>
-      <span class="logo">tweeter</span>
-      <span class="write-tweet"> 
-        <span>Write</span> a new tweet
-      </span>
-    </nav>
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/reset.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
 
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <!-- Top nav bar (fixed) -->
+  <nav>
+    <span class="logo">tweeter</span>
+    <span class="write-tweet">
+      <span>Write</span> a new tweet
+    </span>
+  </nav>
+
+  <main class="main-container">
     <header class="profile">
       <div>
-          <img src="/images/profile-hex.png"> 
+        <img src="/images/profile-hex.png">
       </div>
       <br>
       <div>
-          <h2>Your Name</h2>
+        <h2>Your Name</h2>
       </div>
     </header>
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <div class="tweets-container">
       <div id="error-container">
         Something is wrong
       </div>
@@ -58,10 +65,11 @@
 
       <!-- Tweet contariner -->
       <section id="tweets-container"> </section>
-    </main>
-  </body>
+    </div>
+  </main>
+</body>
 
-  <!-- App JS -->
-  <script type="text/javascript" src="/scripts/client.js"></script>
+<!-- App JS -->
+<script type="text/javascript" src="/scripts/client.js"></script>
 
 </html>
