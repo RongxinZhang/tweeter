@@ -61,9 +61,10 @@
 .tweet{
   border: 3px solid grey;
   padding: 0.8em;
+  margin: 0.8em 0px;
 }
 .tweet:hover{
-  box-shadow: 2px 22px 2px lightseagreen;
+  box-shadow: 2px 4px 2px lightseagreen;
 }
 
 .tweet header{
@@ -81,7 +82,7 @@
 
 .tweet header h3{
   flex: 1;
-
+}
 
 .tweet header span{
   color: lightgrey

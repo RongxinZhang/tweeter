@@ -68,13 +68,11 @@ const loadTweets = async function(cb){
     url: URL,
   }).done((res)=>{
     cb(null, res);
-  })
-  .fail((err)=>{
+  }).fail((err)=>{
     cb(err, null);
     // console.log("failure", err)
-  })
-  .always((res)=>{
-    cb(null, res);
+  }).always((res)=>{
+    // cb(null, res);
     // console.log("finished")
   });
 }
@@ -85,23 +83,35 @@ const loadTweets = async function(cb){
  */
 const postTweets = function(cb){
   const URL = `${BASE_URL}/tweets`
-  $(".new-tweet form").on("submit", function(e){
-    e.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: URL,
-      data: $(this).serialize()
-    }).done((res)=>{
-      cb(null, res);
-    })
-    .fail((err)=>{
-      cb(err, null);
-    })
-    .always((res)=>{
-      cb(null, res);
-    });
+
+  $.ajax({
+    type: "POST",
+    url: URL,
+    data: $(this).serialize()
+  }).done((res)=>{
+    cb(null, res);
+  }).fail((err)=>{
+    cb(err, null);
+  }).always((res)=>{
+    // cb(null, res);
   });
 }
+
+const validateForm = function(text){
+  if (text === null){
+    return "Text is null"
+  }
+  if (text === ""){
+    return "Text is empty, please write something"
+  }
+  if (text.length > 140){
+    return "Text more than 140"
+  }
+}
+
+// console.log(validateForm(""));
+// console.log(validateForm(null));
+// console.log(validateForm("asdfasdf asdfasdfasdf asdfasdfasdfas asdfasdf asdfasdfasdf asdfasdfasdfasasdfasdf asdfasdfasdf asdfasdfasdfasasdfasdf asdfasdfasdf asdfasdfasdfasasdfasdf asdfasdfasdf asdfasdfasdfas"));
 
 $(document).ready(function() {
   // Updates the text in counter
@@ -135,6 +145,10 @@ $(document).ready(function() {
   $(".new-tweet form").on("submit", function(e){
     e.preventDefault();
 
+    const validationMessage = validateForm($(".new-tweet form textarea").val());
+    if (validationMessage){
+      return alert(validationMessage);
+    }
     // Bind this contextd
     const conextedPostTweets = postTweets.bind(this)
     conextedPostTweets((err,res)=>{
