@@ -179,6 +179,7 @@ $(document).ready(function() {
     postTweetsWithContext((err,res)=>{
       if (!err){
         renderTweets([res], true);
+        $(".new-tweet form textarea").val("")
       }
       console.log(err,res)
     });
