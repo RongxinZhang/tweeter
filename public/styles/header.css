@@ -9,11 +9,11 @@ nav{
 }
 
 header{
-  margin: 100px;
+  margin: 100px 50px;
 }
 
 .profile{
-  min-height: 400px;
+  height: 500px;
   width:100%;
   background: #d81765;
   display: flex;
@@ -26,8 +26,11 @@ header{
 }
 
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 768px){
   header{
     margin: 108px 0 0 0;
+  }
+  .profile{
+    min-height: 400px;
   }
 }

@@ -21,6 +21,7 @@
   margin: 0 auto;
   display: flex;
   padding: 1.5em;
+  display: none; 
 }
 
 .new-tweet form{

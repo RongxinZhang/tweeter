@@ -119,13 +119,23 @@ const validateForm = function(text){
   }
 }
 
-// console.log(validateForm(""));
-// console.log(validateForm(null));
-// console.log(validateForm("asdfasdf asdfasdfasdf asdfasdfasdfas asdfasdf asdfasdfasdf asdfasdfasdfasasdfasdf asdfasdfasdf asdfasdfasdfasasdfasdf asdfasdfasdf asdfasdfasdfasasdfasdf asdfasdfasdf asdfasdfasdfas"));
 
 $(document).ready(function() {
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  $(".write-tweet").on('click', function(event) {
+    const viewPortWidth = $( window ).width();
+    $(".new-tweet").show(500, "swing", ()=>{
+      if(isMobile || viewPortWidth < 769) {
+        $('html, body').animate({
+          scrollTop: $(".new-tweet").offset().top-100
+        }, 500);
+      }
+    });
+  });
+  
   // Updates the text in counter
   const TWEET_SIZE = 140;
+  
   $("#tweet-text").on('keyup', function(event) {
     let textLength = $(this).val().length;
 

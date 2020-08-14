@@ -58,24 +58,38 @@ body {
   font-weight: 700;
 }
 
+.write-tweet i{
+  display: block;
+  text-align: center;
+}
+
+.write-tweet i:hover{
+  box-shadow: 0px 0px black;
+}
+
 .main-container{
   display: flex;
   padding-top: 108px;
   flex-direction: row;
+  align-items: flex-start;
 }
 
 .tweets-container{
   align-items: center;
   justify-content: center;
   width: 90%;
-  padding: 50px 0;
+  padding: 50px 1.8em;
   margin: 0 auto;
-  flex: 1.5 1 auto
+  flex: 1.5 1 auto;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 768px){
   .main-container{
     padding-top: 0;
     flex-direction: column;
+  }
+
+  .tweets-container{
+    padding: 50px 0;
   }
 }
